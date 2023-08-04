@@ -42,10 +42,6 @@ equation
   port_b.C_outflow = inStream(port_a.C_outflow);
 
   // Energy balance, considering change of potential energy
-  // Wb_flow = v*A*dpdx + v*F_fric
-  //         = m_flow/d/A * (A*dpdx + A*pressureLoss.dp_fg - F_grav)
-  //         = m_flow/d/A * (-A*g*height_ab*d)
-  //         = -m_flow*g*height_ab
   port_b.h_outflow = inStream(port_a.h_outflow) - system.g*height_ab;
   port_a.h_outflow = inStream(port_b.h_outflow) + system.g*height_ab;
 
