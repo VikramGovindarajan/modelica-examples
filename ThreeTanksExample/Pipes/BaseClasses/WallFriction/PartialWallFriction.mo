@@ -76,7 +76,7 @@ partial package PartialWallFriction
 
   replaceable partial function pressureLoss_m_flow
     "Return pressure loss dp as function of mass flow rate m_flow, i.e., dp = f(m_flow), due to wall friction"
-    extends Modelica.Icons.Function;
+    // extends Modelica.Icons.Function;
     import SI=Modelica.Units.SI;
 	
     input SI.MassFlowRate m_flow "Mass flow rate from port_a to port_b";
