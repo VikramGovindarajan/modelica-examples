@@ -3,37 +3,25 @@ within WaterSteam.Machines;
 model StodolaTurbine "Multistage turbine group using Stodola's ellipse"
 
   parameter Real Cst=1.e7 "Stodola's ellipse coefficient";
-  parameter Real W_fric=0.0
-    "Power losses due to hydrodynamic friction (percent)";
-  parameter Real eta_stato=1.0
-    "Efficiency to account for cinetic losses (<= 1) (s.u.)";
+  parameter Real W_fric=0.0 "Power losses due to hydrodynamic friction (percent)";
+  parameter Real eta_stato=1.0 "Efficiency to account for cinetic losses (<= 1) (s.u.)";
   parameter Units.SI.Area area_nz=1 "Nozzle area";
-  parameter Real eta_nz=1.0
-    "Nozzle efficency (eta_nz < 1 - turbine with nozzle - eta_nz = 1 - turbine without nozzle)";
-  parameter Units.SI.MassFlowRate Qmax=1
-    "Maximum mass flow through the turbine";
+  parameter Real eta_nz=1.0 "Nozzle efficency (eta_nz < 1 - turbine with nozzle - eta_nz = 1 - turbine without nozzle)";
+  parameter Units.SI.MassFlowRate Qmax=1 "Maximum mass flow through the turbine";
   parameter Real eta_is_nom=0.8 "Nominal isentropic efficiency";
   parameter Real eta_is_min=0.35 "Minimum isentropic efficiency";
-  parameter Real a=-1.3889
-    "x^2 coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
-  parameter Real b=2.6944
-    "x coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
-  parameter Real c=-0.5056
-    "Constant coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
+  parameter Real a=-1.3889 "x^2 coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
+  parameter Real b=2.6944 "x coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
+  parameter Real c=-0.5056 "Constant coefficient of the isentropic efficiency characteristics eta_is=f(Q/Qmax)";
   parameter Integer fluid=1 "1: water/steam - 2: C3H3F5";
-  parameter Integer mode_e=0
-    "IF97 region before expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
-  parameter Integer mode_s=0
-    "IF97 region after expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
-  parameter Integer mode_ps=0
-    "IF97 region after isentropic expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
+  parameter Integer mode_e=0 "IF97 region before expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
+  parameter Integer mode_s=0 "IF97 region after expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
+  parameter Integer mode_ps=0 "IF97 region after isentropic expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 protected
 
-  parameter Units.SI.AbsolutePressure pcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT
-    "Critical pressure";
-  parameter Units.SI.Temperature Tcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT
-    "Critical temperature";
+  parameter Units.SI.AbsolutePressure pcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT "Critical pressure";
+  parameter Units.SI.Temperature Tcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT "Critical temperature";
 
 public
 
@@ -41,10 +29,8 @@ public
   Real eta_is_wet(start=0.83) "Isentropic efficiency for wet steam";
   Units.SI.Power W "Mechanical power produced by the turbine";
   Units.SI.MassFlowRate Q "Mass flow rate";
-  Units.SI.SpecificEnthalpy His
-    "Fluid specific enthalpy after isentropic expansion";
-  Units.SI.SpecificEnthalpy Hrs
-    "Fluid specific enthalpy after the real expansion";
+  Units.SI.SpecificEnthalpy His "Fluid specific enthalpy after isentropic expansion";
+  Units.SI.SpecificEnthalpy Hrs "Fluid specific enthalpy after the real expansion";
   Units.SI.AbsolutePressure Pe(start=10e5, min=0) "Pressure at the inlet";
   Units.SI.AbsolutePressure Ps(start=10e5, min=0) "Pressure at the outlet";
   Units.SI.Temperature Te(min=0) "Temperature at the inlet";
@@ -65,6 +51,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pros1;
 
 equation
+
   if (cardinality(M) == 0) then
     M.Ctr = 0;
     M.w = 0;

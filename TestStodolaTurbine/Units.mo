@@ -920,18 +920,8 @@ package Units "Additional SI and non-SI units"
       Complex(redeclare Units.SI.Reluctance re,
                redeclare Units.SI.Reluctance im)
                                                          "Complex reluctance"
-      annotation (Documentation(info="<html>
-<p>
-Since magnetic material properties like reluctance and permeance often are anisotropic resp. salient,
-a special operator instead of multiplication (compare: tensor vs. vector) is required.
-<a href=\"modelica://Modelica.Magnetic.FundamentalWave\">Modelica.Magnetic.FundamentalWave</a> uses a
-special record <a href=\"modelica://Modelica.Magnetic.FundamentalWave.Types.Salient\">Salient</a>
-which is only valid in the rotor-fixed coordinate system.
-</p>
-<p>
-<b>Note:</b> To avoid confusion, no magnetic material properties should be defined as Complex units.
-</p>
-</html>"));
+
+;
     operator record ComplexImpedance =
       Complex(redeclare Resistance re,
                redeclare Reactance im) "Complex electrical impedance";
@@ -941,65 +931,7 @@ which is only valid in the rotor-fixed coordinate system.
     operator record ComplexPower =
       Complex(redeclare ActivePower re,
                redeclare ReactivePower im) "Complex electrical power";
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-              -100},{100,100}}), graphics={
-          Line(
-            points={{-66,78},{-66,-40}},
-            color={64,64,64}),
-          Ellipse(
-            extent={{12,36},{68,-38}},
-            lineColor={64,64,64},
-            fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
-          Rectangle(
-            extent={{-74,78},{-66,-40}},
-            lineColor={64,64,64},
-            fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
-          Polygon(
-            points={{-66,-4},{-66,6},{-16,56},{-16,46},{-66,-4}},
-            lineColor={64,64,64},
-            fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
-          Polygon(
-            points={{-46,16},{-40,22},{-2,-40},{-10,-40},{-46,16}},
-            lineColor={64,64,64},
-            fillColor={175,175,175},
-            fillPattern=FillPattern.Solid),
-          Ellipse(
-            extent={{22,26},{58,-28}},
-            lineColor={64,64,64},
-            fillColor={255,255,255},
-            fillPattern=FillPattern.Solid),
-          Polygon(
-            points={{68,2},{68,-46},{64,-60},{58,-68},{48,-72},{18,-72},{18,-64},
-                {46,-64},{54,-60},{58,-54},{60,-46},{60,-26},{64,-20},{68,-6},{68,
-                2}},
-            lineColor={64,64,64},
-            smooth=Smooth.Bezier,
-            fillColor={175,175,175},
-            fillPattern=FillPattern.Solid)}), Documentation(info="<html>
-<p>This package provides predefined types, such as <i>Mass</i>, <i>Angle</i>, <i>Time</i>, based on the international standard on units, e.g., </p>
-<p><code>   <b>type</b> Angle = Real(<b>final</b> quantity = &quot;Angle&quot;,</code></p>
-<p><code>                     <b>final</b> unit     = &quot;rad&quot;,</code></p>
-<p><code>                     displayUnit    = &quot;deg&quot;);</code> </p>
-<p><br>Copyright &copy; 1998-2016, Modelica Association and DLR. </p>
-<p>This package is copied from package Modelica.SIunits in Modelica package version 3.2.2.</p>
-</html>",   revisions="<html>
-<ul>
-<li><i>May 25, 2011</i> by Stefan Wischhusen:<br/>Added molar units for energy and enthalpy.</li>
-<li><i>Jan. 27, 2010</i> by Christian Kral:<br/>Added complex units.</li>
-<li><i>Dec. 14, 2005</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>Add User&#39;;s Guide and removed &quot;min&quot; values for Resistance and Conductance.</li>
-<li><i>October 21, 2002</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a> and Christian Schweiger:<br/>Added new package <b>Conversions</b>. Corrected typo <i>Wavelenght</i>.</li>
-<li><i>June 6, 2000</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>Introduced the following new types<br/>type Temperature = ThermodynamicTemperature;<br/>types DerDensityByEnthalpy, DerDensityByPressure, DerDensityByTemperature, DerEnthalpyByPressure, DerEnergyByDensity, DerEnergyByPressure<br/>Attribute &quot;final&quot; removed from min and max values in order that these values can still be changed to narrow the allowed range of values.<br/>Quantity=&quot;Stress&quot; removed from type &quot;Stress&quot;, in order that a type &quot;Stress&quot; can be connected to a type &quot;Pressure&quot;.</li>
-<li><i>Oct. 27, 1999</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>New types due to electrical library: Transconductance, InversePotential, Damping.</li>
-<li><i>Sept. 18, 1999</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>Renamed from SIunit to SIunits. Subpackages expanded, i.e., the SIunits package, does no longer contain subpackages.</li>
-<li><i>Aug 12, 1999</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>Type &quot;Pressure&quot; renamed to &quot;AbsolutePressure&quot; and introduced a new type &quot;Pressure&quot; which does not contain a minimum of zero in order to allow convenient handling of relative pressure. Redefined BulkModulus as an alias to AbsolutePressure instead of Stress, since needed in hydraulics.</li>
-<li><i>June 29, 1999</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a>:<br/>Bug-fix: Double definition of &quot;Compressibility&quot; removed and appropriate &quot;extends Heat&quot; clause introduced in package SolidStatePhysics to incorporate ThermodynamicTemperature.</li>
-<li><i>April 8, 1998</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a> and Astrid Jaschinski:<br/>Complete ISO 31 chapters realized.</li>
-<li><i>Nov. 15, 1997</i> by <a href=\"http://www.robotic.dlr.de/Martin.Otter/\">Martin Otter</a> and Hubertus Tummescheit:<br/>Some chapters realized.</li>
-</ul>
-</html>"));
+
   end SI;
 
   package nonSI
@@ -1072,126 +1004,5 @@ which is only valid in the rotor-fixed coordinate system.
     type IdealGasConstant = Real (final quantity="Ideal gas constant", final unit="J/(kg.K)");
     type ViscousFriction = Real (final quantity="Viscous friction", final unit="N/(m/s)");
   end xSI;
-  annotation (
-    Icon(graphics={
-        Text(
-          extent={{-102,0},{24,-26}},
-          lineColor={242,148,0},
-          textString=
-               "Thermo"),
-        Text(
-          extent={{-4,8},{68,-34}},
-          lineColor={46,170,220},
-          textString=
-               "SysPro"),
-        Polygon(
-          points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{42,
-              8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{-50,6},
-              {-62,2}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,8},
-              {-42,22},{-42,30},{-44,38}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,12},
-              {-26,12},{-28,12},{-26,20}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-8,30},{-6,26}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-8,36},{-6,32}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-8,42},{-6,38}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-8,48},{-6,44}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-4,32},{-2,28}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-4,38},{-2,34}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-4,44},{-2,40}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Rectangle(
-          extent={{-4,50},{-2,46}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,20}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{42,
-              6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{-50,6},
-              {-62,2}},
-          lineColor={242,148,0},
-          fillColor={242,148,0},
-          fillPattern=FillPattern.Solid),
-        Line(
-          points={{22,12},{22,14},{22,16},{24,14},{20,18}},
-          color={46,170,220},
-          thickness=0.5),
-        Line(
-          points={{26,12},{26,14},{26,16},{28,14},{24,18}},
-          color={46,170,220},
-          thickness=0.5),
-        Line(
-          points={{30,10},{30,12},{30,14},{32,12},{28,16}},
-          color={46,170,220},
-          thickness=0.5),
-        Polygon(
-          points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
-          lineColor={46,170,220},
-          fillColor={46,170,220},
-          fillPattern=FillPattern.Solid),
-        Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
-        Line(
-          points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
-          color={0,0,255},
-          smooth=Smooth.None),
-        Line(
-          points={{80,80},{100,100}},
-          color={0,0,255},
-          smooth=Smooth.None)}),
-    Documentation(info="<html>
-</html>"));
 
 end Units;
